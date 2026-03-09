@@ -155,7 +155,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### 📈 Model Performance")
 st.sidebar.metric("ROC-AUC",  f"{metrics['roc_auc']:.4f}")
 st.sidebar.metric("Accuracy", f"{metrics['accuracy']:.4f}")
-st.sidebar.metric("F1-Score", f"{metrics['f1']:.4f}")
+st.sidebar.metric("F1-Score", f"{metrics.get('f1',0):.4f}")
 st.sidebar.metric("CV AUC",   f"{metrics['cv_mean']:.4f} ±{metrics['cv_std']:.4f}")
 
 # ══════════════════════════════════════════════════════════
@@ -255,7 +255,7 @@ elif page == "📊 Model Dashboard":
     for col, label, val in [
         (c1,"🎯 ROC-AUC",  f"{metrics['roc_auc']:.4f}"),
         (c2,"✅ Accuracy", f"{metrics['accuracy']:.4f}"),
-        (c3,"📐 F1-Score", f"{metrics['f1']:.4f}"),
+        (c3,"📐 F1-Score", f"{metrics.get('f1',0):.4f}"),
         (c4,"🔁 CV AUC",   f"{metrics['cv_mean']:.4f}"),
     ]:
         with col:
